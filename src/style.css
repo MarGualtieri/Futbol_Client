@@ -1,0 +1,99 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.listado {
+  background-color: rgb(199, 243, 247);
+   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+  line-height: 40px;
+  text-align: center;
+margin-bottom: 10px;
+
+}
+
+.grid-container {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+  line-height: 30px;
+  border: 1px solid rgb(7, 7, 7);
+  text-align: center;
+  background-color:rgb(255, 255, 255) ;
+  border-bottom: 1px solid #dddddd;
+
+}
+.button{
+background-color: rgb(253, 228, 216);
+  color: black;
+
+}
+.container{
+
+align-items: center;
+ background-color: rgb(233, 201, 114);
+ justify-content: center;
+
+}
+.foot{
+  padding:10px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+ 
+}
+.buttonFoot{
+width: auto;
+  padding:10px ;
+  display: flex;
+  align-items:end;
+  justify-content: end;
+
+}
+a{
+  padding:10px ;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
+  justify-content:space-between; 
+}
+#button{
+  
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
+  justify-content:space-between; 
+}
+.titulo{
+
+display: flex;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+}
+h3{
+  text-align: center;
+  color: white;
+  padding: 7px;
+  margin-bottom: 15px;
+}
+/* CREAR BOTONES PERSONALIZADOS  */
+.buttonMaps{
+  border-radius: 4px;
+  background-color: #06b3ca; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+
