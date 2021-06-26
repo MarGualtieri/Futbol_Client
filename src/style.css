@@ -47,13 +47,13 @@ align-items: center;
 width: auto;
   padding:10px ;
   display: flex;
-  align-items:end;
-  justify-content: end;
+  align-items:flex-end;
+  justify-content: flex-end;
 
 }
 a{
   padding:10px ;
-  display: flex;
+  display: flex-end;
   margin-left: 10px;
   margin-right: 10px;
   align-items: center;
@@ -102,14 +102,27 @@ h3{
 
 }
 .add2{
-  
- 
-  
+
    padding-top:10px;
    margin-left: 30px;
    padding-bottom: 10px;
    
 }
+/* #error{
+  text-align: center;
+  color: red;
+  text-align: center;
+}
+#success{
+  text-align: center;
+  color: rgb(63, 59, 255);
+  text-align: center;
+}
+#errorSucces{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+} */
 
 
 
