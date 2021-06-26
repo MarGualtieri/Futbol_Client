@@ -22,7 +22,7 @@ const Lista = () => {
       prom: 0
     }
     
-    await fetch('https://protected-hamlet-17873.herokuapp.com//users', {
+    await fetch('https://protected-hamlet-17873.herokuapp.com/users', {
       method: 'PUT',
       
       headers: {
