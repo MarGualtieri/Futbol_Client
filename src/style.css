@@ -59,14 +59,14 @@ a{
   align-items: center;
   justify-content:space-between; 
 }
-#button{
+/* #button{
   
   display: flex;
   margin-left: 10px;
   margin-right: 10px;
   align-items: center;
   justify-content:space-between; 
-}
+} */
 .titulo{
 
 display: flex;
@@ -93,26 +93,37 @@ h3{
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
+/* CONTENEDOR INPÚT + BOTON */
 .add{
-  
  
  padding-top: 10px;  
  
-   
-
+  
+/* CONTENEDOR INPÚT */
 }
-.add2{
+.add1{
+ 
+padding-bottom: 5px;
+  
 
+ 
+ }
+/* AGREGARSE BOTON */
+.add2{  
+
+flex-direction: row;
    padding-top:10px;
-   margin-left: 30px;
+  align-items:"center";
+  text-align: center;
    padding-bottom: 10px;
+  justify-content: center;
    
 }
 .swal-button {
   padding: 7px 19px;
   margin-right: 130px;
- 
-  border-radius: 2px;
+   border-radius: 2px;
   background-color: #4962B3;
   font-size: 15px;
   border: 1px solid #3e549a;

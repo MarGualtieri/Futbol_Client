@@ -6,124 +6,122 @@ import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 
 const Lista = () => {
-  
-// const mostrarAlerta=()=>{
- 
-//   swal({
-//     title:"este es el titulo",
-//     text: "estaes una mierda",
-//     icon : "success", 
-//     // warning , info,  error
-//    closeModal: true,
-//     button:["No","Si"],  // la segunda posicion es TRUE
-//     value: true,
-//     visible: true,
-//      button: "Aceptar",
 
-//    //timer: "2000"
-//   }).then(respuesta=>{
-//     if (respuesta) {
-//       swal({
-//         text:"el idiota sos vos",
-//         icon : "success"
-//     })}
-//     // else{
-//     //   swal({
-//     //     text:"el idiota soy yo",
-//     //     icon : "error"
-//     // })
-//     // }
-//   })
-//}
+  // const mostrarAlerta=()=>{
 
-  
-  async function agregarse() {
-    
-  if (text.length>11 || text=="") {
+  //   swal({
+  //     title:"este es el titulo",
+  //     text: "estaes una mierda",
+  //     icon : "success", 
+  //     // warning , info,  error
+  //    closeModal: true,
+  //     button:["No","Si"],  // la segunda posicion es TRUE
+  //     value: true,
+  //     visible: true,
+  //      button: "Aceptar",
 
-   
-    swal({
-      title:"Ingresa un nombre Valido",
-      text: "maximo 10 caracteres",
-      icon : "error", 
-      // warning , info,  error
-     //closeModal: true,
-      // button:["No","Si"],  // la segunda posicion es TRUE
-      //value: true,
-      //visible: true,
-       button: "Aceptar",
-  
-  
-    })
-
-  }else{
-
-    swal({
-      title:`¡Hola ${text}!`,
-      text: "Agregado exitosamente",
-      icon : "success", 
-      // warning , info,  error
-     //closeModal: true,
-      // button:["No","Si"],  // la segunda posicion es TRUE
-      //value: true,
-      //visible: true,
-       button: "Aceptar",
-       
-      
-  
-    })
-
-
-    let nuevo = {
-      nombre: text,
-      goles: 0,
-      jugados: 1,
-      ganados: 0,
-      empatados: 0,
-      perdidos: 0,
-      prom: 0
-    }
-
-    await fetch('https://protected-hamlet-17873.herokuapp.com/users', {
-      method: 'PUT',
-
-      headers: {
-        "Content-Type": "application/json",
-
-      },
-      body: JSON.stringify(nuevo)
-    })
-      .then(res => res.json())
-      .then(res => {
- 
-        console.log(res);
-      });
-
+  //    //timer: "2000"
+  //   }).then(respuesta=>{
+  //     if (respuesta) {
+  //       swal({
+  //         text:"el idiota sos vos",
+  //         icon : "success"
+  //     })}
+  //     // else{
+  //     //   swal({
+  //     //     text:"el idiota soy yo",
+  //     //     icon : "error"
+  //     // })
+  //     // }
+  //   })
+  //}
+  function ordenar() {
+    console.log("ordenar")
   }
+
+
+  async function agregarse() {
+
+    if (text.length > 11 || text === "") {
+
+
+      swal({
+        title: "Ingresa un nombre Valido",
+        text: "maximo 10 caracteres",
+        icon: "error",
+        // warning , info,  error
+        //closeModal: true,
+        // button:["No","Si"],  // la segunda posicion es TRUE
+        //value: true,
+        //visible: true,
+        button: "Aceptar",
+
+
+      })
+
+    } else {
+
+      ordenar()
+
+      swal({
+        title: `¡Hola ${text}!`,
+        text: "Agregado exitosamente",
+        icon: "success",
+        // warning , info,  error
+        //closeModal: true,
+        // button:["No","Si"],  // la segunda posicion es TRUE
+        //value: true,
+        //visible: true,
+        button: "Aceptar",
+
+      })
+
+
+      let nuevo = {
+        nombre: text,
+        goles: 0,
+        jugados: 1,
+        ganados: 0,
+        empatados: 0,
+        perdidos: 0,
+        prom: 0
+      }
+
+      await fetch('https://protected-hamlet-17873.herokuapp.com/users', {
+        method: 'PUT',
+
+        headers: {
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(nuevo)
+      })
+        .then(res => res.json())
+        .then(res => {
+          setText("")
+          fetch('https://protected-hamlet-17873.herokuapp.com/users')
+            .then(res => res.json())
+            .then(res => setList(res))
+            .catch(err => console.error(err));
+        });
+
+    }
   }
   // guardo el estado list de valor inicial la lista que tengo
   const [list, setList] = useState([])
   const [text, setText] = useState('');
-  // const [error, setError] = useState("");
-  // const [success, setSuccess] = useState("");
 
 
-  useEffect(() => {
-    // copio la lista con [...list] y la ordeno con sort()
-    const sortedList = [...list].sort((a, b) => (a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0))
-    // actualizo el estado con la nueva lista ya ordenada
-    setList(sortedList)
-  }, [])
 
   useEffect(() => {
     fetch('https://protected-hamlet-17873.herokuapp.com/users')
       .then(res => res.json())
       .then(res => setList(res))
       .catch(err => console.error(err));
-  }, [list]);
 
-  
-  
+  }, []);
+
+
   return (
 
     <div className="container">
@@ -131,7 +129,7 @@ const Lista = () => {
 
       <div className="titulo">
         <h3>FUTBOL PARQUE NORTE</h3>
-     
+
       </div>
 
       <li className="listado">
@@ -274,26 +272,27 @@ const Lista = () => {
 
 
 
-{/*-----------------AGREGARSE BOTON---------------*/}
+        {/*-----------------AGREGARSE BOTON---------------*/}
 
         <div className="add">
-          
-          
-<div className="add">
-          <input
-            type="text" maxLength={10} value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
-          />
-</div>
 
 
-<div className="add2">
-          <button id="button" 
-             onClick={agregarse}  type="button" class="btn btn-danger">
-            Agregarse
-          </button>
+          <div className="add1">
+            <input
+              type="text" maxLength={10} value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+            />
           </div>
 
-          
+
+          <div className="add2">
+            <button id="button"
+              onClick={agregarse} type="button" class="btn btn-danger">
+              Agregarse
+            </button>
+           
+          </div>
+
+
         </div>
 
 
@@ -308,7 +307,7 @@ const Lista = () => {
           >
             ¿Como se calcula el puntaje?
           </button>
-         
+
           {/* modal reglas...... */}
 
           <div
@@ -339,7 +338,7 @@ const Lista = () => {
                   ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
                   Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
                   libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
-                
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -350,8 +349,8 @@ const Lista = () => {
             </div>
           </div>
           {/* --------------------------- */}
-          
-  
+
+
         </div>
       </div>
     </div>
