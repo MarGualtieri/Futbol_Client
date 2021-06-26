@@ -207,7 +207,7 @@ const Lista = () => {
           
 <div className="add">
           <input
-            type="text" maxlength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+            type="text" maxLength={10} value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
           />
 </div>
 
