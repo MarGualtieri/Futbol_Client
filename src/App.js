@@ -51,7 +51,7 @@ const Lista = () => {
   }, [])
 
 useEffect(() => {
-  fetch('https://protected-hamlet-17873.herokuapp.com//users')
+  fetch('https://protected-hamlet-17873.herokuapp.com/users')
   .then(res => res.json())
   .then(res =>setList(res))
   .catch( err => console.error(err));
