@@ -135,3 +135,35 @@ height:40px;
   border: 1px solid #3e549a;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
+
+.parrafo {
+  white-space: pre;
+}
+
+#h5{
+
+  background-color: rgb(238, 227, 245);
+  flex: 1;
+  width: 100%;
+
+}
+#news{
+  margin-top:10px;
+ 
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+#bloque{
+  background-color:rgb(255, 255, 255);
+flex: 1;
+  width: 100%;
+  align-items:center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  
+}

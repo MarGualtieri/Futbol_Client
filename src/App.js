@@ -1,6 +1,7 @@
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { Button, Card } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 
 import swal from 'sweetalert';
@@ -42,7 +43,9 @@ const Lista = () => {
 
   async function agregarse() {
 
-    if (text.length > 11 || text === "") {
+
+    
+    if (text.length > 11 ) {
 
 
       swal({
@@ -59,8 +62,29 @@ const Lista = () => {
 
       })
 
-    } else {
+    }
+    if ( text === "") {
 
+
+      swal({
+        title: "Ingresa un nombre Valido",
+        text: "su nombre no puede estar vacio",
+        icon: "error",
+        // warning , info,  error
+        //closeModal: true,
+        // button:["No","Si"],  // la segunda posicion es TRUE
+        //value: true,
+        //visible: true,
+        button: "Aceptar",
+
+
+      })
+
+    }
+    if (text.length < 11 && text !=="") {
+
+
+    
       ordenar()
 
       swal({
@@ -106,6 +130,7 @@ const Lista = () => {
         });
 
     }
+   
   }
   // guardo el estado list de valor inicial la lista que tengo
   const [list, setList] = useState([])
@@ -329,16 +354,17 @@ const Lista = () => {
                   </button>
                 </div>
                 <div class="modal-body">
-                  ingilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-                  imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
-                  Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                  eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                  enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                  viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                  ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
-                  Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
-                  libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
-
+               
+                <p className="parrafo">&#128309; Ganado = 2 puntos</p>
+                <p className="parrafo">&#128310; Empatado = 1.5 puntos</p>
+                <p className="parrafo">&#128308; Perdido = 1 punto</p>
+                <p className="parrafo">&#127952; Goles = 0.2 puntos</p>
+                <p className="parrafo">&#127942; Bonus = 0.5 x partidos jugados</p>
+               Los puntos se promedian con la cantidad de partidos jugados
+               <p className="parrafo">----------------------------------------</p>
+               <p className="parrafo">PENALIZACIONES</p>
+               &#128219; &#128553; los jugadores que falten sin aviso perderan todos los puntos de la tabla
+               
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -352,6 +378,32 @@ const Lista = () => {
 
 
         </div>
+
+<div id="bloque">
+        
+        <div id="news">
+        <h5 id="h5">
+         Sección de noticias
+        </h5>
+        </div>
+        <div>
+        <Card style={{ width: '18rem' }}>
+        {/* <div>
+                <img src="https://blog.uptodown.com/wp-content/uploads/dream-league-2019-feat.jpg" alt="display image" />
+            </div> */}
+  <Card.Img variant="top" src="https://parquenorte.com/wp-content/uploads/2020/10/G0242932-1.jpg" />
+  
+  <Card.Body>
+    <Card.Title>Vuelve el Futbol !</Card.Title>
+    <Card.Text>
+      Agosto! podria ser el mes para iniciar la actividad
+    </Card.Text>
+    {/* <Button variant="primary"></Button> */}
+  </Card.Body>
+</Card>
+</div>
+</div>
+        
       </div>
     </div>
   );
