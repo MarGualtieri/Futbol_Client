@@ -62,29 +62,11 @@ const Lista = () => {
 
       })
 
-    }
-    if ( text === "") {
+    }else{
 
+if ( text === "") {
+  
 
-      swal({
-        title: "Ingresa un nombre Valido",
-        text: "su nombre no puede estar vacio",
-        icon: "error",
-        // warning , info,  error
-        //closeModal: true,
-        // button:["No","Si"],  // la segunda posicion es TRUE
-        //value: true,
-        //visible: true,
-        button: "Aceptar",
-
-
-      })
-
-    }
-    if (text.length < 11 && text !=="") {
-
-
-    
       ordenar()
 
       swal({
@@ -128,8 +110,28 @@ const Lista = () => {
             .then(res => setList(res))
             .catch(err => console.error(err));
         });
+      }
+      
+    }
+    if ( text === "") {
+
+
+      swal({
+        title: "Ingresa un nombre Valido",
+        text: "su nombre no puede estar vacio",
+        icon: "error",
+        // warning , info,  error
+        //closeModal: true,
+        // button:["No","Si"],  // la segunda posicion es TRUE
+        //value: true,
+        //visible: true,
+        button: "Aceptar",
+
+
+      })
 
     }
+   
    
   }
   // guardo el estado list de valor inicial la lista que tengo
