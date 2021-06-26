@@ -279,6 +279,12 @@ const Lista = () => {
           </span>
         </li>
       ))}
+
+<div id="tituloFooter">
+        <span id="h5footer">Ultima Actualización  26/06/2021</span>
+
+      </div>
+
       <div className="foot">
         <div className="buttonFoot">
           <a
@@ -358,7 +364,7 @@ const Lista = () => {
                 <p className="parrafo">&#128309; Ganado = 2 puntos</p>
                 <p className="parrafo">&#128310; Empatado = 1.5 puntos</p>
                 <p className="parrafo">&#128308; Perdido = 1 punto</p>
-                <p className="parrafo">&#127952; Goles = 0.2 puntos</p>
+                <p className="parrafo">⚽ Goles = 0.2 puntos</p>
                 <p className="parrafo">&#127942; Bonus = 0.5 x partidos jugados</p>
                Los puntos se promedian con la cantidad de partidos jugados
                <p className="parrafo">----------------------------------------</p>
@@ -383,10 +389,10 @@ const Lista = () => {
         
         <div id="news">
         <h5 id="h5">
-         Sección de noticias
+        📝 Sección de noticias
         </h5>
         </div>
-        <div>
+        <div id="card">
         <Card style={{ width: '18rem' }}>
         {/* <div>
                 <img src="https://blog.uptodown.com/wp-content/uploads/dream-league-2019-feat.jpg" alt="display image" />

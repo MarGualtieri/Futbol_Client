@@ -19,7 +19,7 @@ margin-bottom: 10px;
   line-height: 30px;
   border: 1px solid rgb(7, 7, 7);
   text-align: center;
-  background-color:rgb(255, 255, 255) ;
+  background-color:rgb(255, 250, 185) ;
   border-bottom: 1px solid #dddddd;
 
 }
@@ -31,7 +31,7 @@ background-color: rgb(253, 228, 216);
 .container{
 
 align-items: center;
- background-color: rgb(233, 201, 114);
+ background-color: rgb(255, 255, 255);
  justify-content: center;
 
 }
@@ -142,10 +142,10 @@ height:40px;
 
 #h5{
 
-  background-color: rgb(238, 227, 245);
+  background-color: rgb(206, 213, 253);
   flex: 1;
   width: 100%;
-
+padding: 10px;
 }
 #news{
   margin-top:10px;
@@ -156,7 +156,7 @@ height:40px;
 }
 
 #bloque{
-  background-color:rgb(255, 255, 255);
+  background-color:rgb(235, 234, 221);
 flex: 1;
   width: 100%;
   align-items:center;
@@ -166,4 +166,23 @@ flex: 1;
   margin-top: 10px;
 
   
+}
+#card{
+  margin-bottom: 15px;
+}
+#h5footer{
+  color: white;
+  font: size 2px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+#tituloFooter{
+ 
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
 }
