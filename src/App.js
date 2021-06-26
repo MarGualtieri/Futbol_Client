@@ -5,15 +5,10 @@ import React, { useEffect, useState } from 'react';
 const Lista = () => {
 
   async function agrgarse() {
+  
 
-   var person=prompt("Ingrese su Nombre - Maximo 10 letras");
-    while(person.length > 11){
-       alert("debe ingresar un nombre menor a 10 caracteres")
-       person = prompt("Ingrese su Nombre - Maximo 10 letras");
-      }
-    
     let nuevo = {
-      nombre: person,
+      nombre: text,
       goles: 0,
       jugados: 1,
       ganados: 0,
@@ -21,27 +16,28 @@ const Lista = () => {
       perdidos: 0,
       prom: 0
     }
-    
+
     await fetch('https://protected-hamlet-17873.herokuapp.com/users', {
       method: 'PUT',
-      
+
       headers: {
-          "Content-Type": "application/json",
-          
+        "Content-Type": "application/json",
+
       },
       body: JSON.stringify(nuevo)
-})
-.then(res => res.json())
-.then(res=> {
-    console.log(res);
-});
+    })
+      .then(res => res.json())
+      .then(res => {
+ 
+        console.log(res);
+      });
 
-    
+
   }
   // guardo el estado list de valor inicial la lista que tengo
   const [list, setList] = useState([])
+  const [text, setText] = useState('');
 
- 
 
   useEffect(() => {
     // copio la lista con [...list] y la ordeno con sort()
@@ -50,13 +46,13 @@ const Lista = () => {
     setList(sortedList)
   }, [])
 
-useEffect(() => {
-  fetch('https://protected-hamlet-17873.herokuapp.com/users')
-  .then(res => res.json())
-  .then(res =>setList(res))
-  .catch( err => console.error(err));
-}, [list]);
-  
+  useEffect(() => {
+    fetch('https://protected-hamlet-17873.herokuapp.com/users')
+      .then(res => res.json())
+      .then(res => setList(res))
+      .catch(err => console.error(err));
+  }, [list]);
+
 
   return (
 
@@ -172,7 +168,7 @@ useEffect(() => {
 
       {/* Y aquí la lista, cada vez que el estado cambie este componente se va a repintar y a actualizar la vista */}
 
-      {list.map((item,key) => (
+      {list.map((item, key) => (
         <li className="grid-container" key={key}>
           <span className="label">{item.nombre}</span>
           <span className="label">{item.ganados}</span>
@@ -202,12 +198,34 @@ useEffect(() => {
             {" "}
             Whats app
           </a>
-          <button id="button" onClick={agrgarse} type="button" class="btn btn-danger">
+
+        </div>
+
+
+        <div className="add">
+          
+          
+<div className="add">
+          <input
+            type="text" maxlength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+          />
+</div>
+
+
+<div className="add2">
+          <button id="button" data-toggle="modal"
+            data-target="#exampleModalLong2" onClick={agrgarse} type="button" class="btn btn-danger">
             Agregarse
           </button>
+          </div>
+
+          
         </div>
+
+
+        
         <div className="buttonFoot">
-       
+
           <button
             type="button"
             class="btn btn-secondary"
@@ -216,6 +234,7 @@ useEffect(() => {
           >
             ¿Como se calcula el puntaje?
           </button>
+         
           {/* modal reglas...... */}
 
           <div
@@ -246,11 +265,7 @@ useEffect(() => {
                   ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
                   Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
                   libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
-                  luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
-                  Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet
-                  orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
-                  Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue
-                  velit cursus nunc,
+                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -261,6 +276,42 @@ useEffect(() => {
             </div>
           </div>
           {/* --------------------------- */}
+          
+   {/* modal reglas...... */}
+
+   <div
+   class="modal fade"
+   id="exampleModalLong2"
+   tabindex="-1"
+   role="dialog"
+   aria-labelledby="exampleModalLongTitle"
+   aria-hidden="true"
+ >
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLongTitle">
+           Nuevo Jugador : {text}
+         </h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+     Se agrego Correctamente!
+       
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">
+           Cerrar
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>
+ {/* --------------------------- */}
+
+          
         </div>
       </div>
     </div>
