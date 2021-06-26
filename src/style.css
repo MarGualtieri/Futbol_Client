@@ -59,14 +59,15 @@ a{
   align-items: center;
   justify-content:space-between; 
 }
-/* #button{
-  
+ #button{
+  width: 100%;
   display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
+  text-align: center;
+  
   align-items: center;
-  justify-content:space-between; 
-} */
+  justify-content: center;
+  
+} 
 .titulo{
 
 display: flex;
@@ -74,7 +75,7 @@ display: flex;
   align-items: center;
   justify-content: center;
 }
-h3{
+h4{
   text-align: center;
   color: white;
   padding: 7px;
@@ -104,7 +105,7 @@ h3{
 }
 .add1{
  
-padding-bottom: 5px;
+padding-bottom: 0px;
   
 
  
@@ -113,12 +114,17 @@ padding-bottom: 5px;
 .add2{  
 
 flex-direction: row;
-   padding-top:10px;
+   padding-top:5px;
   align-items:"center";
   text-align: center;
    padding-bottom: 10px;
   justify-content: center;
    
+}
+#ing{
+width: 100%;
+height:40px;
+  text-align: center;
 }
 .swal-button {
   padding: 7px 19px;

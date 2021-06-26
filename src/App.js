@@ -128,7 +128,7 @@ const Lista = () => {
       {/* Aquí pongo el botón para reordenar la lista */}
 
       <div className="titulo">
-        <h3>FUTBOL PARQUE NORTE</h3>
+        <h4>FUTBOL PARQUE NORTE</h4>
 
       </div>
 
@@ -278,7 +278,7 @@ const Lista = () => {
 
 
           <div className="add1">
-            <input
+            <input id="ing"
               type="text" maxLength={10} value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
             />
           </div>
