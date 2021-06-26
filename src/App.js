@@ -64,7 +64,7 @@ const Lista = () => {
 
     }else{
 
-if ( text === "") {
+if ( text !== "") {
   
 
       ordenar()
