@@ -312,7 +312,7 @@ if ( text !== "" && text.length < 11) {
 
           <div className="add1">
             <input id="ing"
-              type="text" maxLength={10} value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+               maxLength={10} maxLength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
             />
           </div>
 
