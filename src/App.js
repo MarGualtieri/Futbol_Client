@@ -45,8 +45,8 @@ const Lista = () => {
 
 
     
-    if (text.length > 5 ) {
-console.log("entro en mayor...."+text.length);
+    if (text.length > 11 ) {
+
 
       swal({
         title: "Ingresa un nombre Valido",
@@ -65,7 +65,7 @@ console.log("entro en mayor...."+text.length);
     }else{
 
 if ( text !== "") {
-  console.log("entro en ok ...."+text.length);
+
   
       ordenar()
 
@@ -115,7 +115,7 @@ if ( text !== "") {
     }
     if ( text === "") {
 
-      console.log("entro en cerooo...."+ text.length);
+    
       swal({
         title: "Ingresa un nombre Valido",
         text: "su nombre no puede estar vacio",
