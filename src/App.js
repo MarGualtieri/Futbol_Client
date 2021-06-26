@@ -22,7 +22,7 @@ const Lista = () => {
       prom: 0
     }
     
-    await fetch('http://localhost:3000/users', {
+    await fetch('https://protected-hamlet-17873.herokuapp.com//users', {
       method: 'PUT',
       
       headers: {
@@ -51,7 +51,7 @@ const Lista = () => {
   }, [])
 
 useEffect(() => {
-  fetch('http://localhost:3000/users')
+  fetch('https://protected-hamlet-17873.herokuapp.com//users')
   .then(res => res.json())
   .then(res =>setList(res))
   .catch( err => console.error(err));
