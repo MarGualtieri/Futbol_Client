@@ -64,7 +64,7 @@ const Lista = () => {
 
     }else{
 
-if ( text !== "") {
+if ( text !== "" && text.length < 11) {
 
   
       ordenar()
@@ -90,7 +90,7 @@ if ( text !== "") {
         ganados: 0,
         empatados: 0,
         perdidos: 0,
-        prom: 0
+        prom: 0.0
       }
 
       await fetch('https://protected-hamlet-17873.herokuapp.com/users', {
