@@ -1,50 +1,17 @@
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Button, Card } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 
+import { Card } from 'react-bootstrap';
 import swal from 'sweetalert';
 
 const Lista = () => {
-
-  // const mostrarAlerta=()=>{
-
-  //   swal({
-  //     title:"este es el titulo",
-  //     text: "estaes una mierda",
-  //     icon : "success", 
-  //     // warning , info,  error
-  //    closeModal: true,
-  //     button:["No","Si"],  // la segunda posicion es TRUE
-  //     value: true,
-  //     visible: true,
-  //      button: "Aceptar",
-
-  //    //timer: "2000"
-  //   }).then(respuesta=>{
-  //     if (respuesta) {
-  //       swal({
-  //         text:"el idiota sos vos",
-  //         icon : "success"
-  //     })}
-  //     // else{
-  //     //   swal({
-  //     //     text:"el idiota soy yo",
-  //     //     icon : "error"
-  //     // })
-  //     // }
-  //   })
-  //}
-  function ordenar() {
-    console.log("ordenar")
-  }
 
 
   async function agregarse() {
 
 
-    
     if (text.length > 11 ) {
 
 
@@ -52,11 +19,6 @@ const Lista = () => {
         title: "Ingresa un nombre Valido",
         text: "maximo 10 caracteres",
         icon: "error",
-        // warning , info,  error
-        //closeModal: true,
-        // button:["No","Si"],  // la segunda posicion es TRUE
-        //value: true,
-        //visible: true,
         button: "Aceptar",
 
 
@@ -67,17 +29,10 @@ const Lista = () => {
 if ( text !== "" && text.length < 11) {
 
   
-      ordenar()
-
       swal({
         title: `¡Hola ${text}!`,
         text: "Agregado exitosamente",
         icon: "success",
-        // warning , info,  error
-        //closeModal: true,
-        // button:["No","Si"],  // la segunda posicion es TRUE
-        //value: true,
-        //visible: true,
         button: "Aceptar",
 
       })
@@ -86,7 +41,7 @@ if ( text !== "" && text.length < 11) {
       let nuevo = {
         nombre: text,
         goles: 0,
-        jugados: 1,
+        jugados:0,
         ganados: 0,
         empatados: 0,
         perdidos: 0,
@@ -107,24 +62,25 @@ if ( text !== "" && text.length < 11) {
           setText("")
           fetch('https://protected-hamlet-17873.herokuapp.com/users')
             .then(res => res.json())
-            .then(res => setList(res))
+            .then(res =>
+             
+              name(res)
+            ,
+        
+              )
             .catch(err => console.error(err));
         });
+        
       }
       
     }
     if ( text === "") {
 
-    
       swal({
         title: "Ingresa un nombre Valido",
         text: "su nombre no puede estar vacio",
         icon: "error",
         // warning , info,  error
-        //closeModal: true,
-        // button:["No","Si"],  // la segunda posicion es TRUE
-        //value: true,
-        //visible: true,
         button: "Aceptar",
 
 
@@ -137,18 +93,62 @@ if ( text !== "" && text.length < 11) {
   // guardo el estado list de valor inicial la lista que tengo
   const [list, setList] = useState([])
   const [text, setText] = useState('');
-
-
-
+  
+  
   useEffect(() => {
+
+    
+    
     fetch('https://protected-hamlet-17873.herokuapp.com/users')
       .then(res => res.json())
-      .then(res => setList(res))
+     
+      .then(res => 
+        
+        
+        name(res)
+      
+      )
       .catch(err => console.error(err));
 
+      
   }, []);
 
 
+
+  
+  function name(response) {
+
+
+    response.map((item, key) => (
+     
+            item.jugados===0 ? 
+
+            item.prom = (
+              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5*0)) 
+            ).toFixed(1)
+            :
+            item.prom = (
+              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2 ) /
+              item.jugados
+            ).toFixed(1)
+ 
+    ))
+
+    {/*-----------------doble iterador---------------*/}
+    
+      let newSortedList = [...response].sort((a, b) =>
+        a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0
+      );
+
+      if (newSortedList[0] === response[0])
+        newSortedList = [...response].sort((b, a) =>
+          a.prom > b.prom ? 1 : a.prom < b.prom ? -1 : 0
+        );
+        
+      setList(newSortedList);
+    
+  }
+ 
   return (
 
     <div className="container">
@@ -182,12 +182,12 @@ if ( text !== "" && text.length < 11) {
           className="button"
           onClick={() => {
             let newSortedList = [...list].sort((a, b) =>
-              a.ganados > b.ganados ? 1 : a.ganados < b.ganados ? -1 : 0
+              a.ganados < b.ganados ? 1 : a.ganados > b.ganados ? -1 : 0
             );
 
             if (newSortedList[0] === list[0])
               newSortedList = [...list].sort((b, a) =>
-                a.ganados > b.ganados ? 1 : a.ganados < b.ganados ? -1 : 0
+                a.ganados < b.ganados ? 1 : a.ganados > b.ganados ? -1 : 0
               );
             setList(newSortedList);
           }}
@@ -198,12 +198,12 @@ if ( text !== "" && text.length < 11) {
           className="button"
           onClick={() => {
             let newSortedList = [...list].sort((a, b) =>
-              a.empatados > b.empatados ? 1 : a.empatados < b.empatados ? -1 : 0
+              a.empatados < b.empatados ? 1 : a.empatados > b.empatados ? -1 : 0
             );
 
             if (newSortedList[0] === list[0])
               newSortedList = [...list].sort((b, a) =>
-                a.empatados > b.empatados ? 1 : a.empatados < b.empatados ? -1 : 0
+                a.empatados < b.empatados ? 1 : a.empatados > b.empatados ? -1 : 0
               );
             setList(newSortedList);
           }}
@@ -215,12 +215,12 @@ if ( text !== "" && text.length < 11) {
           className="button"
           onClick={() => {
             let newSortedList = [...list].sort((a, b) =>
-              a.perdidos > b.perdidos ? 1 : a.perdidos < b.perdidos ? -1 : 0
+              a.perdidos < b.perdidos ? 1 : a.perdidos > b.perdidos ? -1 : 0
             );
 
             if (newSortedList[0] === list[0])
               newSortedList = [...list].sort((b, a) =>
-                a.perdidos > b.perdidos ? 1 : a.perdidos < b.perdidos ? -1 : 0
+                a.perdidos < b.perdidos ? 1 : a.perdidos > b.perdidos ? -1 : 0
               );
             setList(newSortedList);
           }}
@@ -232,12 +232,12 @@ if ( text !== "" && text.length < 11) {
           className="button"
           onClick={() => {
             let newSortedList = [...list].sort((a, b) =>
-              a.goles > b.goles ? 1 : a.goles < b.goles ? -1 : 0
+              a.goles < b.goles ? 1 : a.goles > b.goles ? -1 : 0
             );
 
             if (newSortedList[0] === list[0])
               newSortedList = [...list].sort((b, a) =>
-                a.goles > b.goles ? 1 : a.goles < b.goles ? -1 : 0
+                a.goles < b.goles ? 1 : a.goles > b.goles ? -1 : 0
               );
             setList(newSortedList);
           }}
@@ -248,12 +248,12 @@ if ( text !== "" && text.length < 11) {
           className="button"
           onClick={() => {
             let newSortedList = [...list].sort((a, b) =>
-              a.prom > b.prom ? 1 : a.prom < b.prom ? -1 : 0
+              a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0
             );
 
             if (newSortedList[0] === list[0])
               newSortedList = [...list].sort((b, a) =>
-                a.prom > b.prom ? 1 : a.prom < b.prom ? -1 : 0
+                a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0
               );
             setList(newSortedList);
           }}
@@ -266,6 +266,7 @@ if ( text !== "" && text.length < 11) {
 
       {list.map((item, key) => (
         <li className="grid-container" key={key}>
+        
           <span className="label">{item.nombre}</span>
           <span className="label">{item.ganados}</span>
           <span className="label">{item.empatados}</span>
@@ -273,14 +274,33 @@ if ( text !== "" && text.length < 11) {
           <span className="label">{item.goles}</span>
           <span className="label">
             {
-              (item.prom = (
-                (item.ganados * 3 + item.perdidos * 0 + item.empatados * 1) /
+              item.jugados===0 ? 
+              
+              // expected output: 2
+
+              item.prom = (
+                (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5*0)) 
+              ).toFixed(1)
+              :
+              item.prom = (
+                (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2) /
                 item.jugados
-              ).toFixed(1))
-            }
+              ).toFixed(1)
+   
+              }
+
           </span>
         </li>
+
+        
       ))}
+      
+     { console.log(Math.pow(0.5, 3))}
+     { console.log(Math.pow(0.01, 3))}
+     { console.log(Math.pow(1, 1))}
+     { console.log(Math.pow(1, 2))}
+      
+     
 
 <div id="tituloFooter">
         <span id="h5footer">Ultima Actualización  26/06/2021</span>
@@ -312,7 +332,7 @@ if ( text !== "" && text.length < 11) {
 
           <div className="add1">
             <input id="ing"
-               maxLength={10} maxLength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+              type="text"  maxLength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
             />
           </div>
 
@@ -411,9 +431,10 @@ if ( text !== "" && text.length < 11) {
 </Card>
 </div>
 </div>
-        
+ 
       </div>
     </div>
+  
   );
 }
 
