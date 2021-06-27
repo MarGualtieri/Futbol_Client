@@ -1,49 +1,26 @@
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap';
 import swal from 'sweetalert';
 
 const Lista = (event) => {
 
- 
+  function validate(event) {
 
-function validate(event){
-  
- 
-  if (event.target.value.length>=11) {
-    setText(event.target.value.slice(0,-1))
-    
-  }else{
+    if (event.target.value.length >= 11) {
+      setText(event.target.value.slice(0, -1))
 
-    setText(event.target.value)
+    } else {
+
+      setText(event.target.value)
+    }
+
   }
-  
-  
- 
-  if (text.length >=5) {
-  
-    // swal({
-    //   title: "Ingresa un nombre Valido",
-    //   text: "maximo 10 caracteres",
-    //   icon: "error",
-    //   button: "Aceptar",
 
-
-    // })
-
-    
-    
-  }
-}
-  
   async function agregarse() {
 
-
-    if (text.length >= 11 ) {
-
+    if (text.length >= 11) {
 
       swal({
         title: "Ingresa un nombre Valido",
@@ -51,14 +28,13 @@ function validate(event){
         icon: "error",
         button: "Aceptar",
 
-
       })
 
     }
 
-    if ( text.length <= 10 && text.length >= 1 ) {
+    if (text.length <= 10 && text.length >= 1) {
 
-  
+
       swal({
         title: `¡Hola ${text}!`,
         text: "Agregado exitosamente",
@@ -71,7 +47,7 @@ function validate(event){
       let nuevo = {
         nombre: text,
         goles: 0,
-        jugados:0,
+        jugados: 0,
         ganados: 0,
         empatados: 0,
         perdidos: 0,
@@ -93,19 +69,17 @@ function validate(event){
           fetch('https://protected-hamlet-17873.herokuapp.com/users')
             .then(res => res.json())
             .then(res =>
-             
+
               name(res)
             ,
-        
-              )
+
+            )
             .catch(err => console.error(err));
         });
-        
-      }
-      
-    
-  
-    if ( text === "") {
+
+    }
+
+    if (text === "") {
 
       swal({
         title: "Ingresa un nombre Valido",
@@ -114,71 +88,64 @@ function validate(event){
         // warning , info,  error
         button: "Aceptar",
 
-
       })
 
     }
-   
+
   }
   // guardo el estado list de valor inicial la lista que tengo
   const [list, setList] = useState([])
   const [text, setText] = useState('');
-  
-  
+
   useEffect(() => {
 
-    
-    
     fetch('https://protected-hamlet-17873.herokuapp.com/users')
       .then(res => res.json())
-     
-      .then(res => 
-        
-        
+
+      .then(res =>
+
+
         name(res)
-      
+
       )
       .catch(err => console.error(err));
 
-      
+
   }, []);
 
 
-
-  
   function name(response) {
 
-
     response.map((item, key) => (
-     
-            item.jugados===0 ? 
 
-            item.prom = (
-              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5*0)) 
-            ).toFixed(1)
-            :
-            item.prom = (
-              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2) /
-              item.jugados  + ( item.jugados*0.1)
-            ).toFixed(1)
- 
+      item.jugados === 0 ?
+
+        item.prom = (
+          (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5 * 0))
+        ).toFixed(1)
+        :
+        item.prom = (
+          (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles * 0.2) /
+          item.jugados + (item.jugados * 0.1)
+        ).toFixed(1)
+
     ))
 
-    {/*-----------------doble iterador---------------*/}
-    
-      let newSortedList = [...response].sort((a, b) =>
-        a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0
+    {/*-----------------doble iterador---------------*/ }
+
+    let newSortedList = [...response].sort((a, b) =>
+      a.prom < b.prom ? 1 : a.prom > b.prom ? -1 : 0
+    );
+
+    if (newSortedList[0] === response[0])
+      newSortedList = [...response].sort((b, a) =>
+        a.prom > b.prom ? 1 : a.prom < b.prom ? -1 : 0
       );
 
-      if (newSortedList[0] === response[0])
-        newSortedList = [...response].sort((b, a) =>
-          a.prom > b.prom ? 1 : a.prom < b.prom ? -1 : 0
-        );
-        
-      setList(newSortedList);
-    
+    setList(newSortedList);
+
   }
- 
+
   return (
 
     <div className="container">
@@ -296,7 +263,7 @@ function validate(event){
 
       {list.map((item, key) => (
         <li className="grid-container" key={key}>
-        
+
           <span className="label">{item.nombre}</span>
           <span className="label">{item.ganados}</span>
           <span className="label">{item.empatados}</span>
@@ -304,62 +271,54 @@ function validate(event){
           <span className="label">{item.goles}</span>
           <span className="label">
             {
-              item.jugados===0 ? 
-              
-              // expected output: 2
+              item.jugados === 0 ?
 
-              item.prom = (
-                (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5*0)) 
-              ).toFixed(1)
-              :
-              item.prom = (
-                (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2) /
-                item.jugados + ( item.jugados*0.1)
-              ).toFixed(1)
-   
-              }
+                // expected output: 2
+
+                item.prom = (
+                  (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + (0.5 * 0))
+                ).toFixed(1)
+                :
+                item.prom = (
+                  (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles * 0.2) /
+                  item.jugados + (item.jugados * 0.1)
+                ).toFixed(1)
+
+            }
 
           </span>
         </li>
 
-        
       ))}
- 
-<div id="tituloFooter">
+
+      <div id="tituloFooter">
         <span id="h5footer">Ultima Actualización  26/06/2021</span>
 
       </div>
 
-     {/*-----------------AGREGARSE BOTON---------------*/}
+      {/*-----------------AGREGARSE BOTON---------------*/}
 
-        <div className="add">
+      <div className="add">
 
-<div style={{color:"red",fontSize:"12px", textAlign:"center"}}>máximo 10 caracteres</div>
-          <div className="add1">
-            <input id="ing"
-              type="text"  maxLength="10" value= {text} placeholder="Ingrese su nombre"  onChange={validate}
-            />
-          </div>
+        <div style={{ color: "red", fontSize: "12px", textAlign: "center" }}>máximo 10 caracteres</div>
+        <div className="add1">
+          <input id="ing"
+            type="text" maxLength="10" value={text} placeholder="Ingrese su nombre" onChange={validate}
+          />
+        </div>
 
-
-          <div className="add2">
-            <button id="button"
-              onClick={agregarse} type="button" class="btn btn-danger">
-              Agregarse
-            </button>
-           
-          </div>
+        <div className="add2">
+          <button id="button"
+            onClick={agregarse} type="button" class="btn btn-danger">
+            Agregarse
+          </button>
 
         </div>
 
+      </div>
+
 
       <div className="foot">
-      
-
-
-
-   
-
 
         {/*-----------------CACLULAR PUNTAJE INICIO---------------*/}
         <div className="buttonFoot">
@@ -394,17 +353,17 @@ function validate(event){
                   </button>
                 </div>
                 <div class="modal-body">
-               
-                <p className="parrafo">&#128309; Ganado = 2 puntos</p>
-                <p className="parrafo">&#128310; Empatado = 1.5 puntos</p>
-                <p className="parrafo">&#128308; Perdido = 1 punto</p>
-                <p className="parrafo">⚽ Goles = 0.2 puntos</p>
-                <p className="parrafo">&#127942; Bonus = 0.2 x partido jugado</p>
-               Los puntos se promedian con la cantidad de partidos jugados
-               <p className="parrafo">----------------------------------------</p>
-               <p className="parrafo"> &#128219; PENALIZACIONES &#128219;</p>
-               &#128553; los jugadores que falten sin aviso perderan todos los puntos de la tabla 
-               
+
+                  <p className="parrafo">&#128309; Ganado = 2 puntos</p>
+                  <p className="parrafo">&#128310; Empatado = 1.5 puntos</p>
+                  <p className="parrafo">&#128308; Perdido = 1 punto</p>
+                  <p className="parrafo">⚽ Goles = 0.2 puntos</p>
+                  <p className="parrafo">&#127942; Bonus = 0.2 x partido jugado</p>
+                  Los puntos se promedian con la cantidad de partidos jugados
+                  <p className="parrafo">----------------------------------------</p>
+                  <p className="parrafo"> &#128219; PENALIZACIONES &#128219;</p>
+                  &#128553; los jugadores que falten sin aviso perderan todos los puntos de la tabla
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -415,12 +374,10 @@ function validate(event){
             </div>
           </div>
 
-          </div>
+        </div>
 
-
-          
-          {/* --------------------------- */}
-          <div className="buttonFoot">
+        {/* --------------------------- */}
+        <div className="buttonFoot">
           <a
             className="btn btn-info"
             href="https://www.google.com/maps/dir/?api=1&destination=parque+norte&travelmode=bicycling"
@@ -435,36 +392,36 @@ function validate(event){
 
         </div>
 
-      {/*-----------------noticias---------------*/}
+        {/*-----------------noticias---------------*/}
 
-<div id="bloque">
-        
-        <div id="news">
-        <h5 id="h5">
-        📝 Sección de noticias
-        </h5>
-        </div>
-        <div id="card">
-        <Card style={{ width: '18rem' }}>
-        {/* <div>
+        <div id="bloque">
+
+          <div id="news">
+            <h5 id="h5">
+              📝 Sección de noticias
+            </h5>
+          </div>
+          <div id="card">
+            <Card style={{ width: '18rem' }}>
+              {/* <div>
                 <img src="https://blog.uptodown.com/wp-content/uploads/dream-league-2019-feat.jpg" alt="display image" />
             </div> */}
-  <Card.Img variant="top" src="https://parquenorte.com/wp-content/uploads/2020/10/G0242932-1.jpg" />
-  
-  <Card.Body>
-    <Card.Title>Vuelve el Futbol !</Card.Title>
-    <Card.Text>
-      Agosto! podria ser el mes para iniciar la actividad
-    </Card.Text>
-    {/* <Button variant="primary"></Button> */}
-  </Card.Body>
-</Card>
-</div>
-</div>
- 
+              <Card.Img variant="top" src="https://parquenorte.com/wp-content/uploads/2020/10/G0242932-1.jpg" />
+
+              <Card.Body>
+                <Card.Title>Vuelve el Futbol !</Card.Title>
+                <Card.Text>
+                  Agosto! podria ser el mes para iniciar la actividad
+                </Card.Text>
+                {/* <Button variant="primary"></Button> */}
+              </Card.Body>
+            </Card>
+          </div>
+        </div>
+
       </div>
     </div>
-  
+
   );
 }
 
