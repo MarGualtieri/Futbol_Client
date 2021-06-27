@@ -17,7 +17,16 @@ function validate(event){
  
   if (text.length >=11) {
   
-    alert("errror")
+    swal({
+      title: "Ingresa un nombre Valido",
+      text: "maximo 10 caracteres",
+      icon: "error",
+      button: "Aceptar",
+
+
+    })
+
+    
     setText("")
   }
 }
