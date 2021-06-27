@@ -158,8 +158,8 @@ function validate(event){
             ).toFixed(1)
             :
             item.prom = (
-              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2 ) /
-              item.jugados
+              (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2) /
+              item.jugados  + ( item.jugados*0.1)
             ).toFixed(1)
  
     ))
@@ -314,7 +314,7 @@ function validate(event){
               :
               item.prom = (
                 (item.ganados * 2 + item.perdidos * 1 + item.empatados * 1.5 + item.goles*0.2) /
-                item.jugados
+                item.jugados + ( item.jugados*0.1)
               ).toFixed(1)
    
               }
@@ -399,7 +399,7 @@ function validate(event){
                 <p className="parrafo">&#128310; Empatado = 1.5 puntos</p>
                 <p className="parrafo">&#128308; Perdido = 1 punto</p>
                 <p className="parrafo">⚽ Goles = 0.2 puntos</p>
-                <p className="parrafo">&#127942; Bonus = 0.5 x partidos jugados</p>
+                <p className="parrafo">&#127942; Bonus = 0.2 x partido jugado</p>
                Los puntos se promedian con la cantidad de partidos jugados
                <p className="parrafo">----------------------------------------</p>
                <p className="parrafo"> &#128219; PENALIZACIONES &#128219;</p>
