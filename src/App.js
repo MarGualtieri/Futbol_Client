@@ -8,26 +8,34 @@ import swal from 'sweetalert';
 
 const Lista = (event) => {
 
-  
+ 
 
 function validate(event){
-
-  setText(event.target.value)
   
  
-  if (text.length >=11) {
+  if (event.target.value.length>=11) {
+    setText(event.target.value.slice(0,-1))
+    
+  }else{
+
+    setText(event.target.value)
+  }
   
-    swal({
-      title: "Ingresa un nombre Valido",
-      text: "maximo 10 caracteres",
-      icon: "error",
-      button: "Aceptar",
+  
+ 
+  if (text.length >=5) {
+  
+    // swal({
+    //   title: "Ingresa un nombre Valido",
+    //   text: "maximo 10 caracteres",
+    //   icon: "error",
+    //   button: "Aceptar",
 
 
-    })
+    // })
 
     
-    setText("")
+    
   }
 }
   
