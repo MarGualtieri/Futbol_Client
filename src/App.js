@@ -12,7 +12,7 @@ const Lista = () => {
   async function agregarse() {
 
 
-    if (text.length > 11 ) {
+    if (text.length >= 11 ) {
 
 
       swal({
@@ -24,9 +24,9 @@ const Lista = () => {
 
       })
 
-    }else{
+    }
 
-if ( text !== "" && text.length < 11) {
+    if ( text.length <= 10 && text.length >= 1 ) {
 
   
       swal({
@@ -73,7 +73,8 @@ if ( text !== "" && text.length < 11) {
         
       }
       
-    }
+    
+  
     if ( text === "") {
 
       swal({
@@ -87,7 +88,6 @@ if ( text !== "" && text.length < 11) {
       })
 
     }
-   
    
   }
   // guardo el estado list de valor inicial la lista que tengo
@@ -294,14 +294,7 @@ if ( text !== "" && text.length < 11) {
 
         
       ))}
-      
-     { console.log(Math.pow(0.5, 3))}
-     { console.log(Math.pow(0.01, 3))}
-     { console.log(Math.pow(1, 1))}
-     { console.log(Math.pow(1, 2))}
-      
-     
-
+ 
 <div id="tituloFooter">
         <span id="h5footer">Ultima Actualización  26/06/2021</span>
 
@@ -390,8 +383,8 @@ if ( text !== "" && text.length < 11) {
                 <p className="parrafo">&#127942; Bonus = 0.5 x partidos jugados</p>
                Los puntos se promedian con la cantidad de partidos jugados
                <p className="parrafo">----------------------------------------</p>
-               <p className="parrafo">PENALIZACIONES</p>
-               &#128219; &#128553; los jugadores que falten sin aviso perderan todos los puntos de la tabla
+               <p className="parrafo"> &#128219; PENALIZACIONES &#128219;</p>
+               &#128553; los jugadores que falten sin aviso perderan todos los puntos de la tabla 
                
                 </div>
                 <div class="modal-footer">
