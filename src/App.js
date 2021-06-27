@@ -6,9 +6,22 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import swal from 'sweetalert';
 
-const Lista = () => {
+const Lista = (event) => {
 
+  
 
+function validate(event){
+
+  setText(event.target.value)
+  
+ 
+  if (text.length >=11) {
+  
+    alert("errror")
+    setText("")
+  }
+}
+  
   async function agregarse() {
 
 
@@ -322,10 +335,10 @@ const Lista = () => {
 
         <div className="add">
 
-
+<div style={{color:"red",fontSize:"12px", textAlign:"center"}}>máximo 10 caracteres</div>
           <div className="add1">
             <input id="ing"
-              type="text"  maxLength="10" value={text} placeholder="Ingrese su nombre" onChange={event => setText(event.target.value)}
+              type="text"  maxLength="10" value= {text} placeholder="Ingrese su nombre"  onChange={validate}
             />
           </div>
 
