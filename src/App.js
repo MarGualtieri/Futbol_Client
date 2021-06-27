@@ -350,32 +350,18 @@ function validate(event){
            
           </div>
 
-
         </div>
 
 
       <div className="foot">
-        <div className="buttonFoot">
-          <a
-            className="btn btn-info"
-            href="https://www.google.com/maps/dir/?api=1&destination=parque+norte&travelmode=bicycling"
-          >
-            Como llegar
-          </a>
-          {/* https://goo.gl/maps/P3QvNVVZyuEMoSvB6 */}
-          <a href="https://chat.whatsapp.com/DVP4DON0B8hAQZYpfcCy1r" class="btn btn-success">
-            {" "}
-            Whats app
-          </a>
-
-        </div>
+      
 
 
 
    
 
 
-        {/*-----------------COMENTARIO---------------*/}
+        {/*-----------------CACLULAR PUNTAJE INICIO---------------*/}
         <div className="buttonFoot">
 
           <button
@@ -428,10 +414,28 @@ function validate(event){
               </div>
             </div>
           </div>
-          {/* --------------------------- */}
 
+          </div>
+
+
+          
+          {/* --------------------------- */}
+          <div className="buttonFoot">
+          <a
+            className="btn btn-info"
+            href="https://www.google.com/maps/dir/?api=1&destination=parque+norte&travelmode=bicycling"
+          >
+            Como llegar
+          </a>
+          {/* https://goo.gl/maps/P3QvNVVZyuEMoSvB6 */}
+          <a href="https://chat.whatsapp.com/DVP4DON0B8hAQZYpfcCy1r" class="btn btn-success">
+            {" "}
+            Whats app
+          </a>
 
         </div>
+
+      {/*-----------------noticias---------------*/}
 
 <div id="bloque">
         

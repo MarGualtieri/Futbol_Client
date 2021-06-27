@@ -142,31 +142,25 @@ height:40px;
 }
 
 #h5{
+color: black;
 
-  background-color: rgb(206, 213, 253);
-  flex: 1;
-  width: 100%;
 padding: 10px;
 }
 #news{
   margin-top:10px;
  
-  width: 100%;
   align-items: center;
   text-align: center;
 }
 
 #bloque{
   background-color:rgb(235, 234, 221);
-flex: 1;
-  width: 100%;
   align-items:center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
 
-  
 }
 #card{
   margin-bottom: 15px;
